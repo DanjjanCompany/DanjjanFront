@@ -62,10 +62,6 @@ import { mapState, mapActions } from 'vuex'
 export default {
   data() {
     return {
-      userId: '',
-      userName: '',
-      emailId: '',
-      emailDomain: '',
       fields: ['이름', '아이디', '이메일아이디', '이메일도메인'],
     }
   },
@@ -84,13 +80,6 @@ export default {
       this.$router.push({ name: 'userList' })
     },
     async modifyUser() {
-      // let tmp = [
-      //   (this.userId = this.user.userId),
-      //   (this.userName = this.user.userName),
-      //   (this.emailId = this.user.emailId),
-      //   (this.emailDomain = this.user.emailDomain),
-      // ]
-
       //수정버튼 클릭시 수정 요청 보내기
       try {
         await http.put(`/users/${this.userId}`, this.user)
