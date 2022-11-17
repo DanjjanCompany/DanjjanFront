@@ -52,9 +52,9 @@ const routes = [
   },
   // 실거래가 화면
   {
-    path: "/apart",
-    name: "apart",
-    component: () => import("@/views/UserView.vue"),
+    path: "/house",
+    name: "house",
+    component: () => import("@/views/ApartView.vue"),
   },
 ];
 
