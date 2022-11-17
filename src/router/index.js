@@ -42,26 +42,11 @@ const routes = [
         name: 'userDetail',
         component: () => import('@/views/UserView/UserDetail.vue'),
       },
-    ],
-  },
-  //책 화면
-  {
-    path: '/book',
-    name: 'book',
-    component: () => import('@/views/BookView.vue'),
-    redirect: '/book/list',
-    children: [
-      //책 전체조회
+      //유저 수정
       {
-        path: 'list',
-        name: 'bookList',
-        component: () => import('@/views/BookView/BookList.vue'),
-      },
-      //Book 상세 화면
-      {
-        path: 'detail/:isbn',
-        name: 'bookDetail',
-        component: () => import('@/views/BookView/BookView.vue'),
+        path: 'modify/:id',
+        name: 'userModify',
+        component: () => import('@/views/UserView/UserUpdate.vue'),
       },
     ],
   },

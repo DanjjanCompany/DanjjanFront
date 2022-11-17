@@ -12,6 +12,17 @@
         <td>{{ user.joinDate }}</td>
       </tbody>
     </table>
+    <button>
+      <router-link
+        :to="{
+          name: 'userModify',
+          params: { userId: user.userId },
+        }"
+      >
+        수정
+      </router-link>
+    </button>
+    <!-- <button class="btn btn-primary" @click="goList">삭제</button> -->
   </div>
 </template>
 
