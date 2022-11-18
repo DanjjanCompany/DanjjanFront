@@ -43,6 +43,11 @@
                 로그인 페이지
               </router-link>
             </li>
+            <li class="nav-item">
+              <router-link :to="{ name: 'board' }" class="nav-link">
+              게시판
+              </router-link>
+            </li>
           </ul>
         </div>
         <ul class="navbar-nav ml-auto">

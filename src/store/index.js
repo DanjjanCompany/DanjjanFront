@@ -1,7 +1,8 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 
-import userStore from '@/store/modules/userStore.js'
+import userStore from '@/store/modules/userStore'
+
 import { createVuexPersistedState } from 'vue-persistedstate'
 Vue.use(Vuex)
 
@@ -15,5 +16,5 @@ export default new Vuex.Store({
       // Storage: window.localStorage,
     }),
   ],
-  modules: { userStore },
+  modules: { userStore},
 })

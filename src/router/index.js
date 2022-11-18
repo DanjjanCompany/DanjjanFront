@@ -56,6 +56,40 @@ const routes = [
     name: "house",
     component: () => import("@/views/ApartView.vue"),
   },
+  // 게시판
+  {
+    path: "/board",
+    name: "board",
+    component: () => import("@/views/AppBoard"),
+    redirect: "/board/list",
+    children: [
+      {
+        path: "list",
+        name: "boardlist",
+        component: () => import("@/views/BoardView/BoardList"),
+      },
+      {
+        path: "write",
+        name: "boardwrite",
+        component: () => import("@/views/BoardView/BoardWrite"),
+      },
+      {
+        path: "view/:articleno",
+        name: "boardview",
+        component: () => import("@/views/BoardView/BoardView"),
+      },
+      {
+        path: "modify/:articleno",
+        name: "boardmodify",
+        component: () => import("@/views/BoardView/BoardModify"),
+      },
+      {
+        path: "delete/:articleno",
+        name: "boarddelete",
+        component: () => import("@/views/BoardView/BoardDelete"),
+      },
+    ],
+  },
 ];
 
 const router = new VueRouter({
