@@ -134,7 +134,7 @@
   </div>
 </template>
 
-<script>
+<script scoped>
 import { mapState } from 'vuex'
 
 export default {
@@ -171,15 +171,15 @@ export default {
 </script>
 <style scoped>
 #navV {
-  background-color: #fff;
-  color: #ffb91a;
+  background-color: #edab13;
+  color: black;
 }
 .aaa {
   margin-bottom: 50px;
 }
 a {
   text-decoration: none;
-  color: black;
+  color: rgb(255, 255, 255);
   border-radius: 50px;
 }
 a:hover {

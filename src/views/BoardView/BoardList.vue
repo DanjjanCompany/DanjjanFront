@@ -1,8 +1,8 @@
 <template>
   <div>
-    <h1 class="">게시글 목록</h1>
+    <h1 class="">NOTICE😀</h1>
     <div>
-      <button @click="moveWrite">글작성</button>
+      <button @click="moveWrite" id="writeBtn">글 작성</button>
     </div>
     <div v-if="articles.length">
       <table>
@@ -13,8 +13,7 @@
           <col style="width: 5%;" />
           <col style="width: 15%;" />
         </colgroup>
-        <thead>
-          <!--  style="background-color: white;" -->
+        <thead style="background-color: #ffb91a;">
           <tr>
             <th>번호</th>
             <th>제목</th>
@@ -65,4 +64,16 @@ export default {
 }
 </script>
 
-<style scoped></style>
+<style scoped>
+table {
+  border: 1px solid #08250b;
+}
+#writeBtn {
+  border-radius: 50px;
+  width: 120px;
+  height: 40px;
+  line-height: 5px;
+  background-color: #edab13;
+  border: 1px solid #edab13;
+}
+</style>

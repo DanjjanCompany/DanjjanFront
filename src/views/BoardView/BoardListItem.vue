@@ -31,6 +31,8 @@ a {
 }
 a:hover {
   text-decoration: none;
+}
+#td1 {
   color: #ffb91a;
 }
 </style>
