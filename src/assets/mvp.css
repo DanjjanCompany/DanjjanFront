@@ -14,8 +14,8 @@
   --color-table: #118bee;
   --color-text: #000;
   --color-text-secondary: #999;
-  --font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
-    Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif;
+  --font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu,
+    Cantarell, "Helvetica Neue", sans-serif;
   --hover-brightness: 1.2;
   --justify-important: center;
   --justify-normal: left;
@@ -27,7 +27,7 @@
 }
 
 @media (prefers-color-scheme: dark) {
-  :root[color-mode='user'] {
+  :root[color-mode="user"] {
     --color-accent: #0097fc4f;
     --color-bg: #333;
     --color-bg-secondary: #555;
@@ -178,7 +178,7 @@ nav ul li ul {
 
 nav ul li ul::before {
   /* fill gap above to make mousing over them easier */
-  content: '';
+  content: "";
   position: absolute;
   left: 0;
   right: 0;
@@ -288,7 +288,7 @@ a em,
 a i,
 a strong,
 button,
-input[type='submit'] {
+input[type="submit"] {
   border-radius: var(--border-radius);
   display: inline-block;
   font-size: medium;
@@ -299,17 +299,17 @@ input[type='submit'] {
 }
 
 button,
-input[type='submit'] {
+input[type="submit"] {
   font-family: var(--font-family);
 }
 
 button:active,
-input[type='submit']:active {
+input[type="submit"]:active {
   filter: brightness(var(--active-brightness));
 }
 
 button:hover,
-input[type='submit']:hover {
+input[type="submit"]:hover {
   cursor: pointer;
   filter: brightness(var(--hover-brightness));
 }
@@ -317,7 +317,7 @@ input[type='submit']:hover {
 a b,
 a strong,
 button,
-input[type='submit'] {
+input[type="submit"] {
   background-color: var(--color-link);
   border: 2px solid var(--color-link);
   color: var(--color-bg);
@@ -360,7 +360,7 @@ input:disabled {
 }
 
 button[disabled]:hover,
-input[type='submit'][disabled]:hover {
+input[type="submit"][disabled]:hover {
   filter: none;
 }
 
@@ -389,20 +389,20 @@ textarea {
   max-width: var(--width-card-wide);
 }
 
-input[type='checkbox'],
-input[type='radio'] {
+input[type="checkbox"],
+input[type="radio"] {
   display: inline-block;
 }
 
-input[type='checkbox'] + label,
-input[type='radio'] + label {
+input[type="checkbox"] + label,
+input[type="radio"] + label {
   display: inline-block;
   font-weight: normal;
   position: relative;
   top: 1px;
 }
 
-input[type='range'] {
+input[type="range"] {
   padding: 0.4rem 0;
 }
 
@@ -415,7 +415,7 @@ textarea {
   padding: 0.4rem 0.8rem;
 }
 
-input[type='text'],
+input[type="text"],
 textarea {
   width: calc(100% - 1.6rem);
 }
@@ -448,10 +448,8 @@ table {
   border: 1px solid var(--color-bg-secondary);
   border-radius: var(--border-radius);
   border-spacing: 0;
-  display: inline-block;
   max-width: 100%;
   overflow-x: auto;
-  padding: 0;
   white-space: nowrap;
 }
 
@@ -463,10 +461,8 @@ table tr {
 }
 
 table thead {
-  background-color: var(--color-table);
   border-collapse: collapse;
   border-radius: var(--border-radius);
-  color: var(--color-bg);
   margin: 0;
   padding: 0;
 }

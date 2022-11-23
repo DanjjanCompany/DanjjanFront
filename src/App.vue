@@ -29,7 +29,7 @@ export default {
   background-color: #08250b;
   color: #ffb91a;
   width: 100%;
-  height: 1000px;
+  height: 902px;
   text-align: center;
 }
 ::selection {
