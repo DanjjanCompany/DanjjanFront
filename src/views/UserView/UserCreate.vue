@@ -46,6 +46,7 @@
                 type="password"
                 id="pwdcheck"
                 placeholder="🔐 비밀번호 확인"
+                v-model="userPwdChk"
               />
             </div>
             <div class="inputDiv">
@@ -77,7 +78,7 @@
               </button>
               <br />
               <br />
-              <button type="button" id="btn-clear">
+              <button type="button" id="btn-clear" @click="inputClear">
                 초기화
               </button>
             </div>
@@ -107,6 +108,7 @@ export default {
       userPwd: '',
       emailId: '',
       emailDomain: '도메인 선택',
+      userPwdChk: '',
     }
   },
   methods: {
@@ -127,6 +129,14 @@ export default {
       } catch (error) {
         alert('등록 실패')
       }
+    },
+    inputClear() {
+      this.userName = ''
+      this.userId = ''
+      this.userPwd = ''
+      this.emailId = ''
+      this.emailDomain = '도메인 선택'
+      this.userPwdChk = ''
     },
   },
 }
@@ -190,5 +200,10 @@ button {
 }
 .input-label {
   line-height: 45px;
+}
+
+#userid,
+#username {
+  width: 581.5px;
 }
 </style>
