@@ -7,12 +7,12 @@
 
 <script>
 export default {
-  name: "AppBoard",
+  name: 'AppBoard',
   components: {},
-};
+}
 </script>
 
-<style>
+<style scoped>
 .underline {
   display: inline-block;
   background: linear-gradient(180deg, rgba(255, 255, 255, 0) 70%, cyan 30%);

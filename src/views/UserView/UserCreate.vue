@@ -12,7 +12,7 @@
                 type="text"
                 id="username"
                 name="userName"
-                placeholder="😊 이름을 입력해 주세요"
+                placeholder="⛄ 이름을 입력해 주세요"
                 v-model="userName"
               />
             </div>
@@ -24,7 +24,7 @@
                 type="text"
                 id="userid"
                 name="userId"
-                placeholder="🎃 아이디를 입력해 주세요"
+                placeholder="🎄 아이디를 입력해 주세요"
                 v-model="userId"
               />
             </div>
@@ -142,7 +142,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 input {
   width: 100%;
   height: 50px;
@@ -205,5 +205,9 @@ button {
 #userid,
 #username {
   width: 581.5px;
+}
+
+h1 {
+  font-weight: 700;
 }
 </style>
