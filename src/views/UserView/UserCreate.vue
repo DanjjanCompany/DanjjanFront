@@ -46,6 +46,7 @@
                 type="password"
                 id="pwdcheck"
                 placeholder="🔐 비밀번호 확인"
+                v-model="pwdcheck"
               />
             </div>
             <div class="inputDiv">
@@ -72,14 +73,10 @@
               </select>
             </div>
             <div class="col-auto text-center">
-              <button type="button" id="btn-join" @click="signUp">
-                회원가입
-              </button>
+              <button type="button" id="btn-join" @click="signUp">회원가입</button>
               <br />
               <br />
-              <button type="button" id="btn-clear">
-                초기화
-              </button>
+              <button type="button" id="btn-clear">초기화</button>
             </div>
           </div>
           <div id="right">
@@ -87,7 +84,7 @@
               src="@/assets/login.jpg"
               alt="로그인 사진"
               width="100%"
-              style="border-radius: 50px;"
+              style="border-radius: 50px"
             />
           </div>
         </div>
@@ -97,39 +94,62 @@
 </template>
 
 <script>
-import http from '@/util/http'
+import http from "@/util/http";
 export default {
   data() {
     return {
       member: {},
-      userName: '',
-      userId: '',
-      userPwd: '',
-      emailId: '',
-      emailDomain: '도메인 선택',
-    }
+      userName: "",
+      userId: "",
+      userPwd: "",
+      pwdcheck: "",
+      emailId: "",
+      emailDomain: "도메인 선택",
+    };
   },
+
   methods: {
     async signUp() {
+      const validateEmail = /^[a-zA-z0-9]{4,12}$/;
+      const validatePassword = /^(?=.*[a-zA-z])(?=.*[0-9])(?=.*[$`~!@$!%*#^?&\\(\\)\-_=+]).{8,16}$/;
       let member = {
         userName: this.userName,
         userId: this.userId,
         userPwd: this.userPwd,
         emailId: this.emailId,
         emailDomain: this.emailDomain,
-      }
-
-      try {
-        console.log('member : ', member)
-        await http.post(`/users/`, member)
-        alert('등록 성공')
-        this.$router.push({ name: 'home' })
-      } catch (error) {
-        alert('등록 실패')
+      };
+      if (!this.userName) {
+        alert("이름을 입력해주세요.");
+      } else if (!this.userId) {
+        alert("아이디를 입력해주세요.");
+      } else if (!validateEmail.test(this.userId)) {
+        alert("아이디는 영문 대소문자와 숫자 4~12자리로 입력해주세요.");
+      } else if (!this.userPwd) {
+        alert("비밀번호를 입력해주세요.");
+      } else if (!validatePassword.test(this.userPwd)) {
+        alert("비밀번호는 영문 대소문자와 숫자, 특수문자 8~16자리로 입력해주세요.");
+      } else if (!this.pwdcheck) {
+        alert("비밀번호 확인을 진행해주세요.");
+      } else if (this.pwdcheck != this.userPwd) {
+        alert("비밀번호와 일치하지 않습니다.");
+      } else if (!this.emailId) {
+        alert("이메일 아이디를 입력해주세요.");
+      } else if (this.emailDomain == "도메인 선택") {
+        alert("이메일 도메인을 선택해주세요.");
+      } else {
+        try {
+          console.log("member : ", member);
+          await http.post(`/users/`, member);
+          alert("등록 성공");
+          this.$router.push({ name: "home" });
+        } catch (error) {
+          alert("등록 실패");
+        }
       }
     },
   },
-}
+};
 </script>
 
 <style>
