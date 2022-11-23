@@ -12,7 +12,7 @@
                 type="text"
                 id="username"
                 name="userName"
-                placeholder="😊 이름을 입력해 주세요"
+                placeholder="⛄ 이름을 입력해 주세요"
                 v-model="userName"
               />
             </div>
@@ -24,7 +24,7 @@
                 type="text"
                 id="userid"
                 name="userId"
-                placeholder="🎃 아이디를 입력해 주세요"
+                placeholder="🎄 아이디를 입력해 주세요"
                 v-model="userId"
               />
             </div>
@@ -46,7 +46,7 @@
                 type="password"
                 id="pwdcheck"
                 placeholder="🔐 비밀번호 확인"
-                v-model="pwdcheck"
+                v-model="userPwdChk"
               />
             </div>
             <div class="inputDiv">
@@ -76,7 +76,7 @@
               <button type="button" id="btn-join" @click="signUp">회원가입</button>
               <br />
               <br />
-              <button type="button" id="btn-clear">초기화</button>
+              <button type="button" id="btn-clear" @click="inputClear">초기화</button>
             </div>
           </div>
           <div id="right">
@@ -102,9 +102,9 @@ export default {
       userName: "",
       userId: "",
       userPwd: "",
-      pwdcheck: "",
       emailId: "",
       emailDomain: "도메인 선택",
+      userPwdChk: "",
     };
   },
 
@@ -129,9 +129,9 @@ export default {
         alert("비밀번호를 입력해주세요.");
       } else if (!validatePassword.test(this.userPwd)) {
         alert("비밀번호는 영문 대소문자와 숫자, 특수문자 8~16자리로 입력해주세요.");
-      } else if (!this.pwdcheck) {
+      } else if (!this.userPwdChk) {
         alert("비밀번호 확인을 진행해주세요.");
-      } else if (this.pwdcheck != this.userPwd) {
+      } else if (this.userPwdChk != this.userPwd) {
         alert("비밀번호와 일치하지 않습니다.");
       } else if (!this.emailId) {
         alert("이메일 아이디를 입력해주세요.");
@@ -148,11 +148,19 @@ export default {
         }
       }
     },
+    inputClear() {
+      this.userName = "";
+      this.userId = "";
+      this.userPwd = "";
+      this.emailId = "";
+      this.emailDomain = "도메인 선택";
+      this.userPwdChk = "";
+    },
   },
 };
 </script>
 
-<style>
+<style scoped>
 input {
   width: 100%;
   height: 50px;
@@ -210,5 +218,14 @@ button {
 }
 .input-label {
   line-height: 45px;
+}
+
+#userid,
+#username {
+  width: 581.5px;
+}
+
+h1 {
+  font-weight: 700;
 }
 </style>
