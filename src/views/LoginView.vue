@@ -26,7 +26,18 @@
             </div>
             <br />
             <br />
-            <button @click="login">로그인</button>
+            <button @click="login">Log in</button>
+            <br />
+            <div class="createDiv">
+              Don't have an account?&nbsp;&nbsp;
+              <router-link
+                :to="{ name: 'create' }"
+                class="nav-link"
+                id="createChild"
+              >
+                Sign up
+              </router-link>
+            </div>
           </div>
           <div id="right">
             <img
@@ -125,5 +136,15 @@ button {
 
 #userid {
   width: 581.5px;
+}
+
+.createDiv {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+#createChild {
+  font-weight: 600;
+  text-decoration: underline;
 }
 </style>

@@ -1,102 +1,96 @@
 <template>
-  <div class="container">
-    <div class="">
-      <div class="">
-        <!-- <h2 class="my-3 py-3 shadow-sm bg-light text-center">
-          <mark class="orange">회원가입</mark>
-        </h2> -->
-        <h1>유저 등록</h1>
-      </div>
-      <div id="formDiv">
-        <form id="form-join" method="POST" action="">
-          <div class="mb-3">
-            <label for="username" class="form-label">이름 :</label>
-            <input
-              type="text"
-              class="form-control"
-              id="username"
-              name="userName"
-              placeholder="이름"
-              v-model="userName"
-            />
-          </div>
-          <div class="mb-3">
-            <label for="userid" class="form-label">아이디 :</label>
-            <input
-              type="text"
-              class="form-control"
-              id="userid"
-              name="userId"
-              placeholder="아이디"
-              v-model="userId"
-            />
-          </div>
-          <div id="idcheck-result"></div>
-          <div class="mb-3">
-            <label for="userpwd" class="form-label">비밀번호 :</label>
-            <input
-              type="password"
-              class="form-control"
-              id="userpwd"
-              name="userPwd"
-              placeholder="비밀번호"
-              v-model="userPwd"
-            />
-          </div>
-          <div class="mb-3">
-            <label for="pwdcheck" class="form-label">비밀번호 확인 :</label>
-            <input
-              type="password"
-              class="form-control"
-              id="pwdcheck"
-              placeholder="비밀번호 확인"
-            />
-          </div>
-          <div class="mb-3">
-            <label for="emailid" class="form-label">이메일 :</label>
-            <div class="input-group">
+  <div>
+    <div id="bg">
+      <div id="main">
+        <div id="main2">
+          <div id="left">
+            <h1>SIGN UP🎅</h1>
+            <br />
+            <br />
+            <div class="inputDiv">
               <input
                 type="text"
-                class="form-control"
+                id="username"
+                name="userName"
+                placeholder="😊 이름을 입력해 주세요"
+                v-model="userName"
+              />
+            </div>
+            <div class="inputDiv">
+              <!-- <label for="userid" class="input-label">
+                ID&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              </label> -->
+              <input
+                type="text"
+                id="userid"
+                name="userId"
+                placeholder="🎃 아이디를 입력해 주세요"
+                v-model="userId"
+              />
+            </div>
+            <div class="inputDiv">
+              <!-- <label for="userpwd" class="input-label">
+                PW&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              </label> -->
+              <input
+                type="password"
+                id="userpwd"
+                name="userPwd"
+                placeholder="🔒 비밀번호"
+                v-model="userPwd"
+              />
+            </div>
+            <div class="inputDiv">
+              <!-- <label for="pwdcheck" class="input-label">PW again</label> -->
+              <input
+                type="password"
+                id="pwdcheck"
+                placeholder="🔐 비밀번호 확인"
+              />
+            </div>
+            <div class="inputDiv">
+              <!-- <label for="emailid" class="input-label">이메일</label> -->
+              <input
+                type="text"
                 id="emailid"
                 name="emailId"
-                placeholder="이메일 아이디"
+                placeholder="✉ 이메일 아이디"
                 v-model="emailId"
               />
-              <span class="input-group-text">@</span>
+              <span class="input-label">&nbsp;@&nbsp;</span>
               <select
-                class="form-select"
                 id="emaildomain"
                 name="emailDomain"
-                aria-label="이메일 도메인 선택"
+                aria-label="도메인 선택"
                 v-model="emailDomain"
               >
-                <option selected>선택하기</option>
-                <option value="naver.com">naver.com</option>
+                <option selected>도메인 선택</option>
+                <option value="naver.com" selected>naver.com</option>
                 <option value="kakao.com">kakao.com</option>
                 <option value="google.com">google.com</option>
                 <option value="ssafy.com">ssafy.com</option>
               </select>
             </div>
+            <div class="col-auto text-center">
+              <button type="button" id="btn-join" @click="signUp">
+                회원가입
+              </button>
+              <br />
+              <br />
+              <button type="button" id="btn-clear">
+                초기화
+              </button>
+            </div>
           </div>
-          <div class="col-auto text-center">
-            <button
-              type="button"
-              id="btn-join"
-              class="btn btn-outline-primary mb-3"
-              @click="signUp"
-            >
-              회원가입
-            </button>
-            <button
-              type="button"
-              id="btn-clear"
-              class="btn btn-outline-success mb-3"
-            >
-              초기화
-            </button>
+          <div id="right">
+            <img
+              src="@/assets/login.jpg"
+              alt="로그인 사진"
+              width="100%"
+              style="border-radius: 50px;"
+            />
           </div>
-        </form>
+        </div>
       </div>
     </div>
   </div>
@@ -112,7 +106,7 @@ export default {
       userId: '',
       userPwd: '',
       emailId: '',
-      emailDomain: '',
+      emailDomain: '도메인 선택',
     }
   },
   methods: {
@@ -139,10 +133,62 @@ export default {
 </script>
 
 <style>
-#formDiv {
+input {
+  width: 100%;
+  height: 50px;
+  border-radius: 25px;
+  border: 1px solid lightgrey;
+}
+button {
+  width: 100%;
+  height: 50px;
+  border-radius: 25px;
+  border: 1px solid #ff9a16;
+  background-color: #ff9a16;
+  line-height: 10px;
+}
+#main {
+  background-color: white;
+  margin: 0px 300px 0px 300px;
+  height: 700px;
+  border-radius: 50px;
+  color: #000;
+}
+#main2 {
+  /* display: flex;
+  align-items: center; */
   display: flex;
-  align-content: center;
+  flex-direction: row;
   justify-content: center;
-  margin-top: 30px;
+}
+#left {
+  width: 601px;
+  height: 700px;
+  margin: 0px 15px 0px 25px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+#right {
+  width: 701px;
+  height: 700px;
+  margin: 0px 25px 0px 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.inputDiv {
+  display: flex;
+  flex-direction: row;
+  justify-content: left;
+  margin-bottom: 20px;
+}
+#emaildomain {
+  border-radius: 25px;
+  border: 1px solid lightgrey;
+}
+.input-label {
+  line-height: 45px;
 }
 </style>
