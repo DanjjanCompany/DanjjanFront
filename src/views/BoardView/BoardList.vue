@@ -54,6 +54,7 @@ export default {
     // TODO : 글목록 얻기.
     http.get('/board').then(({ data }) => {
       this.articles = data
+      console.log(data)
     })
   },
   methods: {

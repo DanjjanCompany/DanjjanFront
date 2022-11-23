@@ -94,8 +94,10 @@ export default {
       });
     },
     async getTradeCode(value) {
+      
+      try {
       let result = await http.get(`/house/tradeCode?Code=` + value);
-      let sidoList = result.data;
+          let sidoList = result.data;
       let dealTable = document.querySelector("#dealTable");
       dealTable.innerHTML = "";
 
@@ -111,6 +113,11 @@ export default {
 				<td>${houseDeal.aptCode}</td>
 				</tr>`;
       });
+        } catch (error) {
+          alert("정보가 없습니다.")
+          let dealTable = document.querySelector("#dealTable");
+          dealTable.innerHTML = "";
+        }
     },
     async getDongCode(value) {
       let result = await http.get(`/house/dongCode?Code=` + value);

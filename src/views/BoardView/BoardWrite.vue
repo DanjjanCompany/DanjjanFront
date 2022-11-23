@@ -3,7 +3,8 @@
     <h1 class="underline">SSAFY 게시글 작성</h1>
     <div class="regist_form">
       <label for="userid">작성자</label>
-      <input type="text" id="userid" v-model="userid" ref="userid" />
+      <!-- <input type="text" id="userid" v-model="userid" ref="userid" /> -->
+      <input type="text" id="userid" v-model=userInfo.id readonly />
       <br />
       <label for="subject">제목</label>
       <input type="text" id="subject" v-model="subject" ref="subject" />
@@ -26,6 +27,7 @@
 
 <script>
 import http from '@/util/http'
+import { mapState } from 'vuex'
 
 export default {
   name: 'BoardWrite',
@@ -36,6 +38,9 @@ export default {
       content: null,
     }
   },
+  computed: {
+    ...mapState('userStore', ['userInfo']),
+  },
   methods: {
     // 입력값 체크하기 - 체크가 성공하면 registArticle 호출
     checkValue() {
@@ -43,10 +48,10 @@ export default {
       // 작성자아이디, 제목, 내용이 없을 경우 각 항목에 맞는 메세지를 출력
       let err = true
       let msg = ''
-      !this.userid &&
-        ((msg = '작성자 입력해주세요'),
-        (err = false),
-        this.$refs.userid.focus())
+      // !this.userid &&
+      //   ((msg = '작성자 입력해주세요'),
+      //   (err = false),
+      //   this.$refs.userid.focus())
       err &&
         !this.subject &&
         ((msg = '제목 입력해주세요'), (err = false), this.$refs.subject.focus())
@@ -61,9 +66,9 @@ export default {
     registArticle() {
       // 비동기
       // TODO : 글번호에 해당하는 글정보 등록.
-      console.log('글작성 하러가자!!!!')
+      // console.log('글작성 하러가자!!!!')
       let article = {
-        userid: this.userid,
+        userid: this.userInfo.id,
         subject: this.subject,
         content: this.content,
       }

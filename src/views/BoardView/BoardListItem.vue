@@ -18,11 +18,12 @@ export default {
   props: {
     article: Object,
   },
+  
 }
 </script>
 
 <style>
-td {
+/* td {
   color: white;
   text-align: center;
 }
@@ -34,5 +35,5 @@ a:hover {
 }
 #td1 {
   color: #ffb91a;
-}
+} */
 </style>
