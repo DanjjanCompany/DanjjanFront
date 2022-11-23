@@ -8,7 +8,8 @@
       <input type="text" id="subject" v-model="article.subject" ref="subject" /><br />
       <label for="content">내용</label>
       <br />
-      <textarea id="content" v-model="article.content" ref="content" cols="35" rows="5"></textarea><br />
+      <textarea id="content" v-model="article.content" ref="content" cols="35" rows="5"></textarea
+      ><br />
       <button @click="checkValue">수정</button>
       <button @click="moveList">목록</button>
     </div>
@@ -48,9 +49,14 @@ export default {
       // 작성자아이디, 제목, 내용이 없을 경우 각 항목에 맞는 메세지를 출력
       let err = true;
       let msg = "";
-      !this.article.userid && ((msg = "작성자 입력해주세요"), (err = false), this.$refs.userid.focus());
-      err && !this.article.subject && ((msg = "제목 입력해주세요"), (err = false), this.$refs.subject.focus());
-      err && !this.article.content && ((msg = "내용 입력해주세요"), (err = false), this.$refs.content.focus());
+      !this.article.userid &&
+        ((msg = "작성자 입력해주세요"), (err = false), this.$refs.userid.focus());
+      err &&
+        !this.article.subject &&
+        ((msg = "제목 입력해주세요"), (err = false), this.$refs.subject.focus());
+      err &&
+        !this.article.content &&
+        ((msg = "내용 입력해주세요"), (err = false), this.$refs.content.focus());
 
       if (!err) alert(msg);
       // 만약, 내용이 다 입력되어 있다면 registArticle 호출
