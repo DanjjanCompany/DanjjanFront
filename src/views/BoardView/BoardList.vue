@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="bg">
-      <h1>NOTICE😀</h1>
+      <h1>NOTICE 🎄</h1>
       <div>
         <button @click="moveWrite" id="writeBtn">글 작성</button>
       </div>
@@ -37,51 +37,51 @@
 </template>
 
 <script>
-import http from '@/util/http'
+import http from "@/util/http";
 
 export default {
-  name: 'BoardList',
+  name: "BoardList",
   data() {
     return {
       articles: [],
       fields: [
         {
-          key: 'articleno',
-          label: '글 번호',
-          tdClass: 'tdClass',
+          key: "articleno",
+          label: "글 번호",
+          tdClass: "tdClass",
           sortable: false,
         },
-        { key: 'subject', label: '제목', tdClass: 'tdSubject' },
-        { key: 'userid', label: '작성자', tdClass: 'tdClass' },
-        { key: 'regtime', label: '작성일', tdClass: 'tdClass' },
-        { key: 'hit', label: '조회수', tdClass: 'tdClass' },
+        { key: "subject", label: "제목", tdClass: "tdSubject" },
+        { key: "userid", label: "작성자", tdClass: "tdClass" },
+        { key: "regtime", label: "작성일", tdClass: "tdClass" },
+        { key: "hit", label: "조회수", tdClass: "tdClass" },
       ],
       perPage: 5,
       currentPage: 1,
-      sortBy: 'articleno',
+      sortBy: "articleno",
       sortDesc: false,
-    }
+    };
   },
   created() {
     // 비동기
     // TODO : 글목록 얻기.
-    http.get('/board').then(({ data }) => {
-      this.articles = data
-    })
+    http.get("/board").then(({ data }) => {
+      this.articles = data;
+    });
   },
   methods: {
     moveWrite() {
-      this.$router.push({ name: 'boardwrite' })
+      this.$router.push({ name: "boardwrite" });
     },
     viewArticle(article) {
-      console.log(article)
+      console.log(article);
       this.$router.push({
-        name: 'boardview',
+        name: "boardview",
         params: {
           articleno: article.articleno,
           hit: true,
         },
-      })
+      });
       // if (this.user() !== null) {
       //   if (this.user().userId === article.userId) {
       //     this.$router.push({
@@ -109,10 +109,10 @@ export default {
   },
   computed: {
     row() {
-      return this.articles.length
+      return this.articles.length;
     },
   },
-}
+};
 </script>
 
 <style scoped>

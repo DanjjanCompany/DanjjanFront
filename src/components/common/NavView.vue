@@ -18,11 +18,7 @@
             >
               <span class="navbar-toggler-icon"></span>
             </button>
-            <li
-              class="nav-item"
-              style="margin-top: 7px; visibility: hidden;"
-              v-if="userInfo.id"
-            >
+            <li class="nav-item" style="margin-top: 7px; visibility: hidden" v-if="userInfo.id">
               <span>{{ userInfo.id }}님 환영합니다.</span>
             </li>
           </ul>
@@ -30,56 +26,38 @@
         <div class="" id="navbarNavDropdown">
           <ul class="navbar-nav">
             <li class="nav-item">
-              <router-link :to="{ name: 'create' }" class="nav-link">
-                유저 등록
-              </router-link>
+              <router-link :to="{ name: 'create' }" class="nav-link"> 유저 등록 </router-link>
             </li>
             <li class="nav-item">
-              <router-link
-                :to="{ name: 'user' }"
-                class="nav-link"
-                style="text-align: center;"
-              >
+              <router-link :to="{ name: 'user' }" class="nav-link" style="text-align: center">
                 유저 목록
               </router-link>
             </li>
             <li class="nav-item">
-              <router-link
-                :to="{ name: 'house' }"
-                class="nav-link"
-                style="text-align: center;"
-              >
+              <router-link :to="{ name: 'house' }" class="nav-link" style="text-align: center">
                 실거래가 조회
               </router-link>
             </li>
             <li class="nav-item">
-              <router-link
-                :to="{ name: 'loginPage' }"
-                class="nav-link"
-                v-model="navLinkFocus"
-              >
+              <router-link :to="{ name: 'loginPage' }" class="nav-link" v-model="navLinkFocus">
                 로그인 페이지
               </router-link>
             </li>
             <li class="nav-item">
-              <router-link :to="{ name: 'board' }" class="nav-link">
-                게시판
-              </router-link>
+              <router-link :to="{ name: 'board' }" class="nav-link"> 게시판 </router-link>
             </li>
           </ul>
         </div>
         <ul class="navbar-nav ml-auto">
-          <li v-if="!userInfo.id" class="nav-item" style="visibility: hidden;">
+          <li v-if="!userInfo.id" class="nav-item" style="visibility: hidden">
             <a href="#" @click.prevent="loginModal.show()">로그인</a>
           </li>
           <template v-else>
             <li class="nav-item">
-              <a href="#" @click.prevent="logout" style="padding: 8px;">
-                로그아웃
-              </a>
+              <a href="#" @click.prevent="logout" style="padding: 8px; color: red"> 로그아웃 </a>
             </li>
-            <li class="nav-item" style="margin-top: 7px;">
-              <span>{{ userInfo.id }}님 환영합니다.</span>
+            <li class="nav-item" style="margin-top: 7px">
+              <span style="color: white">{{ userInfo.id }}님 환영합니다.</span>
             </li>
           </template>
         </ul>
@@ -103,13 +81,7 @@
             <form @submit.prevent="login">
               <div class="form-group">
                 <label for="id">id</label>
-                <input
-                  type="text"
-                  class="form-control"
-                  id="id"
-                  v-model="loginInfo.id"
-                  required
-                />
+                <input type="text" class="form-control" id="id" v-model="loginInfo.id" required />
               </div>
               <div class="form-group">
                 <label for="pass">비밀번호</label>
@@ -122,11 +94,7 @@
                 />
               </div>
               <button class="btn btn-success" type="submit">로그인</button>
-              <button
-                type="button"
-                class="btn btn-secondary"
-                @click="loginModal.hide()"
-              >
+              <button type="button" class="btn btn-secondary" @click="loginModal.hide()">
                 닫기
               </button>
             </form>
@@ -139,7 +107,7 @@
 </template>
 
 <script scoped>
-import { mapState } from 'vuex'
+import { mapState } from "vuex";
 
 export default {
   mounted() {
@@ -150,29 +118,29 @@ export default {
     return {
       loginInfo: {},
       loginModal: null, //로그인 모달 객체
-      navLinkFocus: '',
-    }
+      navLinkFocus: "",
+    };
   },
   computed: {
-    ...mapState('userStore', ['userInfo']),
+    ...mapState("userStore", ["userInfo"]),
   },
   methods: {
     async login() {
       try {
-        await this.$store.dispatch('userStore/login', this.loginInfo)
-        this.loginModal.hide() //로그인 모달창 숨기기
-        alert('로그인 성공')
+        await this.$store.dispatch("userStore/login", this.loginInfo);
+        this.loginModal.hide(); //로그인 모달창 숨기기
+        alert("로그인 성공");
       } catch (error) {
-        alert('로그인 실패')
+        alert("로그인 실패");
       }
     },
     async logout() {
-      await this.$store.dispatch('userStore/logout')
-      alert('로그아웃 성공')
-      this.$router.push('/').catch(() => {}) //홈 화면 이동
+      await this.$store.dispatch("userStore/logout");
+      alert("로그아웃 성공");
+      this.$router.push("/").catch(() => {}); //홈 화면 이동
     },
   },
-}
+};
 </script>
 <style scoped>
 #navV {

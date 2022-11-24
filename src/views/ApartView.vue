@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1>실거래가 조회</h1>
+    <h1>실거래가 조회 ⛄</h1>
     <!-- <input type="hidden" name="action" value="getDongDode" /> -->
     <select id="sido" @change="getGugun(sido)" style="background-color: white" v-model="sido">
       <option>시</option>
@@ -94,17 +94,16 @@ export default {
       });
     },
     async getTradeCode(value) {
-      
       try {
-      let result = await http.get(`/house/tradeCode?Code=` + value);
-          let sidoList = result.data;
-      let dealTable = document.querySelector("#dealTable");
-      dealTable.innerHTML = "";
+        let result = await http.get(`/house/tradeCode?Code=` + value);
+        let sidoList = result.data;
+        let dealTable = document.querySelector("#dealTable");
+        dealTable.innerHTML = "";
 
-      console.log("sido", sidoList);
+        console.log("sido", sidoList);
 
-      sidoList.forEach((houseDeal) => {
-        dealTable.innerHTML += `<tr style="color: white"><td>${houseDeal.no}</td>
+        sidoList.forEach((houseDeal) => {
+          dealTable.innerHTML += `<tr style="color: white"><td>${houseDeal.no}</td>
 				<td>${houseDeal.dealAmount}</td>
 				<td>${houseDeal.dealYear}년${houseDeal.dealMonth}월${houseDeal.dealDay}일</td>
 				<td>${houseDeal.area}</td>
@@ -112,12 +111,12 @@ export default {
 				<td>${houseDeal.cancelDealType}</td>
 				<td>${houseDeal.aptCode}</td>
 				</tr>`;
-      });
-        } catch (error) {
-          alert("정보가 없습니다.")
-          let dealTable = document.querySelector("#dealTable");
-          dealTable.innerHTML = "";
-        }
+        });
+      } catch (error) {
+        alert("정보가 없습니다.");
+        let dealTable = document.querySelector("#dealTable");
+        dealTable.innerHTML = "";
+      }
     },
     async getDongCode(value) {
       let result = await http.get(`/house/dongCode?Code=` + value);
