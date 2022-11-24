@@ -13,10 +13,11 @@
           :fields="fields"
           :per-page="perPage"
           :current-page="currentPage"
-          class="table1"
           @row-clicked="viewArticle"
           :sort-desc.sync="sortDesc"
           :sort-by.sync="sortBy"
+          class="table1"
+          head-variant="warning"
         ></b-table>
         <b-pagination
           v-model="currentPage"
@@ -82,29 +83,6 @@ export default {
           hit: true,
         },
       })
-      // if (this.user() !== null) {
-      //   if (this.user().userId === article.userId) {
-      //     this.$router.push({
-      //       name: "freeboardview",
-      //       params: {
-      //         articleNo: article.articleNo,
-      //         userId: article.userId,
-      //         hit: true,
-      //       },
-      //     });
-      //   } else {
-      //     this.$router.push({
-      //       name: "freeboardview",
-      //       params: {
-      //         articleNo: article.articleNo,
-      //         userId: article.userId,
-      //         hit: false,
-      //       },
-      //     });
-      //   }
-      // } else {
-      //   swal("잘못된 접근입니다.", "로그인을 해주세요", "error");
-      // }
     },
   },
   computed: {
@@ -160,7 +138,7 @@ th {
   background-color: white;
   color: black;
   padding: 0 100px;
-  border-radius: 20px;
+  border-radius: 40px;
   cursor: pointer;
   border: 1px solid #08250b;
 }

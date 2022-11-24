@@ -12,7 +12,7 @@
         <td>{{ user.joinDate }}</td>
       </tbody>
     </table>
-    <button class="btn btn-primary">
+    <button class="">
       <router-link
         :to="{
           name: 'userList',
@@ -31,7 +31,7 @@
         수정
       </router-link>
     </button>
-    <button class="btn btn-danger" @click="deleteUser">삭제</button>
+    <button class="" @click="deleteUser">삭제</button>
   </div>
 </template>
 
@@ -62,7 +62,7 @@ export default {
       try {
         await http.delete(`/users/${this.userId}`)
         alert('삭제 성공')
-        this.$router.push({ name: "userList" });
+        this.$router.push({ name: 'userList' })
       } catch (error) {
         alert('삭제 실패')
       }
@@ -70,3 +70,14 @@ export default {
   },
 }
 </script>
+<style scoped>
+button {
+  background-color: #edab13;
+  border: 1px solid #edab13;
+  color: black;
+}
+a {
+  text-decoration: none;
+  color: black;
+}
+</style>

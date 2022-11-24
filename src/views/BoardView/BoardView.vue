@@ -1,40 +1,68 @@
 <template>
   <div class="regist">
-    <h1 class="underline">SSAFY 글 상세보기</h1>
+    <h1>NOTICE DETAIL😁</h1>
+    <div class="tableDiv">
+      <table>
+        <thead>
+          <th v-for="field in fields" :key="field">{{ field }}</th>
+        </thead>
+        <tbody>
+          <tr>
+            <td>글 번호</td>
+            <td>{{ article.articleno }}</td>
+          </tr>
+          <tr>
+            <td>글 제목</td>
+            <td>{{ article.subject }}</td>
+          </tr>
+          <tr>
+            <td>작성자</td>
+            <td>{{ article.userid }}</td>
+          </tr>
+          <tr>
+            <td>조회수</td>
+            <td>{{ article.hit }}</td>
+          </tr>
+          <tr>
+            <td>작성 시간</td>
+            <td>{{ article.regtime }}</td>
+          </tr>
+          <tr>
+            <td>내용</td>
+            <td>{{ article.content }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
     <div class="regist_form">
-      <label>글번호</label>
-      <div class="view">{{ article.articleno }}</div>
-      <label>글제목</label>
-      <div class="view">{{ article.subject }}</div>
-      <label>작성자</label>
-      <div class="view">{{ article.userid }}</div>
-      <label>조회수</label>
-      <div class="view">{{ article.hit }}</div>
-      <label>작성시간</label>
-      <div class="view">{{ article.regtime }}</div>
-      <label>내용</label>
-      <div class="view">{{ article.content }}</div>
-
       <div style="padding-top: 15px;">
-        <router-link
-          :to="{
-            name: 'boardmodify',
-            params: { articleno: article.articleno },
-          }"
-          class="btn"
-        >
-          수정
-        </router-link>
-        <router-link
-          :to="{
-            name: 'boarddelete',
-            params: { articleno: article.articleno },
-          }"
-          class="btn"
-        >
-          삭제
-        </router-link>
-        <router-link :to="{ name: 'boardlist' }" class="btn">목록</router-link>
+        <button class="">
+          <router-link
+            :to="{
+              name: 'boardmodify',
+              params: { articleno: article.articleno },
+            }"
+            class="btn"
+          >
+            수정
+          </router-link>
+        </button>
+        <button class="">
+          <router-link
+            :to="{
+              name: 'boarddelete',
+              params: { articleno: article.articleno },
+            }"
+            class="btn"
+          >
+            삭제
+          </router-link>
+        </button>
+        <button>
+          <router-link :to="{ name: 'boardlist' }" class="btn">
+            목록
+          </router-link>
+        </button>
       </div>
     </div>
   </div>
@@ -48,25 +76,40 @@ export default {
   data() {
     return {
       article: Object,
+      fields: ['속성', '값'],
     }
   },
   created() {
-    // 비동기
-    // TODO : 글번호에 해당하는 글정보 얻기.
     http.get(`/board/${this.$route.params.articleno}`).then(({ data }) => {
       this.article = data
-      console.log(this.article)
+      console.log('this.article : ', this.article)
     })
-    // this.article = {
-    //   articleno: 10,
-    //   userid: "안효인",
-    //   subject: "안녕하세요",
-    //   content: "안녕하세요!!!!",
-    //   hit: 10,
-    //   regtime: "2022-11-08 17:03:15",
-    // };
+  },
+  computed: {
+    row() {
+      return this.article.length
+    },
   },
 }
 </script>
 
-<style scoped></style>
+<style scoped>
+button {
+  background-color: #edab13;
+  border: 1px solid #edab13;
+  color: black;
+}
+a {
+  text-decoration: none;
+  color: black;
+}
+.tableDiv {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 30px;
+}
+h1 {
+  font-weight: 700;
+  margin-bottom: 50px;
+}
+</style>
