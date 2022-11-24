@@ -55,6 +55,7 @@ export default {
     // TODO : 글번호에 해당하는 글정보 얻기.
     http.get(`/board/${this.$route.params.articleno}`).then(({ data }) => {
       this.article = data
+      console.log(this.article)
     })
     // this.article = {
     //   articleno: 10,
