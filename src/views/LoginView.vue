@@ -36,7 +36,9 @@
             </div>
             <div class="createDiv">
               Find Password?&nbsp;&nbsp;
-              <button class="btn btn-danger" @click="sendMail">Find Pwd</button>
+              <router-link :to="{ name: 'findPwd' }" class="nav-link" id="findPwd">
+                Find Password
+              </router-link>
             </div>
           </div>
           <div id="right">
@@ -154,6 +156,10 @@ button {
   justify-content: center;
 }
 #createChild {
+  font-weight: 600;
+  text-decoration: underline;
+}
+#findPwd {
   font-weight: 600;
   text-decoration: underline;
 }
