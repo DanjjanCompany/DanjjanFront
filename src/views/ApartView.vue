@@ -1,37 +1,67 @@
 <template>
   <div>
-    <h1>실거래가 조회 ⛄</h1>
-    <!-- <input type="hidden" name="action" value="getDongDode" /> -->
-    <select id="sido" @change="getGugun(sido)" style="background-color: white" v-model="sido">
-      <option>시</option>
-    </select>
-    <select id="gugun" @change="getDong(gugun)" style="background-color: white" v-model="gugun">
-      <option>구/군</option>
-    </select>
-    <select id="dong" @change="getDongCode(dong)" style="background-color: white" v-model="dong">
-      <option>동</option>
-    </select>
+    <div class="bg">
+      <h1>실거래가 조회 ⛄</h1>
+      <!-- <input type="hidden" name="action" value="getDongDode" /> -->
+      <div class="dropDownDiv">
+        <select id="sido" @change="getGugun(sido)" v-model="sido">
+          <option selected>시</option>
+        </select>
+        <select id="gugun" @change="getDong(gugun)" v-model="gugun">
+          <option selected>구/군</option>
+        </select>
+        <select id="dong" @change="getDongCode(dong)" v-model="dong">
+          <option>동</option>
+        </select>
+      </div>
+      <!-- background-color: white -->
+      <!-- 지도를 표시할 div 입니다 -->
+      <div id="map" class="container"></div>
 
-    <!-- 지도를 표시할 div 입니다 -->
-    <div id="map" class="container" style="width: 100%; height: 300px"></div>
+      <!-- <table class="table">
+        <thead>
+          <tr>
+            <th>no</th>
+            <th>daelAmount</th>
+            <th>dealDate</th>
+            <th>area</th>
+            <th>floor</th>
+            <th>cancelDealType</th>
+            <th>aptCode</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody id="dealTable"></tbody>
+      </table> -->
+      <div v-if="sidoList.length" class="tablePadding">
+        <b-table
+          striped
+          hover
+          :items="sidoList"
+          :fields="fields"
+          :per-page="perPage"
+          :current-page="currentPage"
+          :sort-desc.sync="sortDesc"
+          :sort-by.sync="sortBy"
+          class="table1"
+        ></b-table>
+        <b-pagination
+          v-model="currentPage"
+          :total-rows="row"
+          :per-page="perPage"
+          first-text="🌑"
+          prev-text="🌜"
+          next-text="🌛"
+          last-text="🌕"
+          align="center"
+          aria-controls="my-table"
+        ></b-pagination>
+      </div>
+      <!-- <div class="text-center" v-else>게시글이 없습니다.</div> -->
+      <!-- , tdClass: "tdSubject" -->
 
-    <table class="table">
-      <thead>
-        <tr>
-          <th>no</th>
-          <th>daelAmount</th>
-          <th>dealDate</th>
-          <th>area</th>
-          <th>floor</th>
-          <th>cancelDealType</th>
-          <th>aptCode</th>
-          <th></th>
-        </tr>
-      </thead>
-      <tbody id="dealTable"></tbody>
-    </table>
-
-    <router-view></router-view>
+      <router-view></router-view>
+    </div>
   </div>
 </template>
 
@@ -48,6 +78,20 @@ export default {
       map: null,
       latitude: 0,
       longitude: 0,
+      sidoList: [],
+      fields: [
+        { key: "no", label: "번호", sortable: false },
+        { key: "daelAmount", label: "daelAmount" },
+        { key: "dealDate", label: "dealDate" },
+        { key: "area", label: "area" },
+        { key: "floor", label: "floor" },
+        { key: "cancelDealType", label: "cancelDealType" },
+        { key: "aptCode", label: "aptCode" },
+      ],
+      perPage: 5,
+      currentPage: 1,
+      sortBy: "no",
+      sortDesc: false,
     };
   },
   created() {
@@ -63,6 +107,12 @@ export default {
       document.head.appendChild(script);
     }
   },
+  computed: {
+    row() {
+      return this.sidoList.length;
+    },
+  },
+
   methods: {
     async getSido() {
       let result = await http.get(`/house/sido`);
@@ -97,23 +147,24 @@ export default {
       try {
         let result = await http.get(`/house/tradeCode?Code=` + value);
         let sidoList = result.data;
+        this.sidoList = result.data;
         let dealTable = document.querySelector("#dealTable");
         dealTable.innerHTML = "";
 
         console.log("sido", sidoList);
 
-        sidoList.forEach((houseDeal) => {
-          dealTable.innerHTML += `<tr style="color: white"><td>${houseDeal.no}</td>
-				<td>${houseDeal.dealAmount}</td>
-				<td>${houseDeal.dealYear}년${houseDeal.dealMonth}월${houseDeal.dealDay}일</td>
-				<td>${houseDeal.area}</td>
-				<td>${houseDeal.floor}</td>
-				<td>${houseDeal.cancelDealType}</td>
-				<td>${houseDeal.aptCode}</td>
-				</tr>`;
-        });
+        // sidoList.forEach((houseDeal) => {
+        //   dealTable.innerHTML += `<tr style="color: white"><td>${houseDeal.no}</td>
+        // <td>${houseDeal.dealAmount}</td>
+        // <td>${houseDeal.dealYear}년${houseDeal.dealMonth}월${houseDeal.dealDay}일</td>
+        // <td>${houseDeal.area}</td>
+        // <td>${houseDeal.floor}</td>
+        // <td>${houseDeal.cancelDealType}</td>
+        // <td>${houseDeal.aptCode}</td>
+        // </tr>`;
+        // });
       } catch (error) {
-        alert("정보가 없습니다.");
+        // alert("정보가 없습니다.");
         let dealTable = document.querySelector("#dealTable");
         dealTable.innerHTML = "";
       }
@@ -276,7 +327,49 @@ export default {
 </script>
 
 <style>
+.bg {
+  padding: 0px 220px;
+  overflow: hidden;
+}
+h1 {
+  font-weight: 700;
+  margin-bottom: 20px;
+}
 table > tr {
   color: white;
+}
+.dropDownDiv {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  padding: 0px 300px;
+  margin-bottom: 30px;
+}
+select {
+  width: 25%;
+  text-align: center;
+  background-color: #edab13;
+  color: white;
+  border: 1px solid #edab13;
+}
+select option {
+  text-align: left;
+}
+#dealTable {
+  overflow: hidden;
+}
+.table1 {
+  background-color: white;
+  color: black;
+  padding: 50px 100px;
+  border-radius: 40px;
+  cursor: pointer;
+  border: 1px solid #08250b;
+  margin-top: 70px;
+}
+#map {
+  width: 100%;
+  height: 300px;
+  margin: 0 auto;
 }
 </style>

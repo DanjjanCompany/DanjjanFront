@@ -1,12 +1,22 @@
 <template>
-  <div>
-    <h1>Home 페이지 입니다.</h1>
-    <h3>로그인 풀리는 문제</h3>
+  <div id="bg">
+    <div class="imgDiv">
+      <img src="@/assets/card.jpg" alt="" />
+    </div>
   </div>
 </template>
 
 <script>
-export default {}
+export default {};
 </script>
 
-<style></style>
+<style scoped>
+#bg {
+  overflow: hidden;
+}
+img {
+  width: 300px;
+  height: 150px;
+  object-fit: cover;
+}
+</style>

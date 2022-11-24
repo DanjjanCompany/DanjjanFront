@@ -60,9 +60,7 @@
             </router-link>
           </button>
           <button>
-            <router-link :to="{ name: 'boardlist' }" class="btn">
-              목록
-            </router-link>
+            <router-link :to="{ name: 'boardlist' }" class="btn"> 목록 </router-link>
           </button>
         </div>
       </div>
@@ -71,28 +69,28 @@
 </template>
 
 <script>
-import http from '@/util/http-common'
+import http from "@/util/http-common";
 
 export default {
-  name: 'BoardView',
+  name: "BoardView",
   data() {
     return {
       article: Object,
-      fields: ['속성', '값'],
-    }
+      fields: ["속성", "값"],
+    };
   },
   created() {
     http.get(`/board/${this.$route.params.articleno}`).then(({ data }) => {
-      this.article = data
-      console.log('this.article : ', this.article)
-    })
+      this.article = data;
+      console.log("this.article : ", this.article);
+    });
   },
   computed: {
     row() {
-      return this.article.length
+      return this.article.length;
     },
   },
-}
+};
 </script>
 
 <style scoped>
@@ -100,7 +98,6 @@ button {
   background-color: #edab13;
   border: 1px solid #edab13;
   border-radius: 50px;
-  width: 120px;
   height: 50px;
   color: black;
   text-align: center;
@@ -135,7 +132,7 @@ table {
   justify-content: center;
 }
 a {
-  line-height: 0px;
   padding-bottom: 15px;
+  line-height: 5px;
 }
 </style>

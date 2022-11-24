@@ -120,7 +120,7 @@ export default {
   line-height: 5px;
   position: fixed;
   top: 140px;
-  left: 1500px;
+  left: 1450px;
   background-color: #edab13;
   border: 1px solid #edab13;
 }
