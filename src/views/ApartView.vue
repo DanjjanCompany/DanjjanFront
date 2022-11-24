@@ -81,11 +81,11 @@ export default {
       sidoList: [],
       fields: [
         { key: "no", label: "번호", sortable: false },
-        { key: "daelAmount", label: "daelAmount" },
-        { key: "dealDate", label: "dealDate" },
+        // { key: "daelAmount", label: "daelAmount" },
+        // { key: "dealDate", label: "dealDate" },
         { key: "area", label: "area" },
         { key: "floor", label: "floor" },
-        { key: "cancelDealType", label: "cancelDealType" },
+        // { key: "cancelDealType", label: "cancelDealType" },
         { key: "aptCode", label: "aptCode" },
       ],
       perPage: 5,
@@ -146,12 +146,12 @@ export default {
     async getTradeCode(value) {
       try {
         let result = await http.get(`/house/tradeCode?Code=` + value);
-        let sidoList = result.data;
+        //let sidoList = result.data;
         this.sidoList = result.data;
         let dealTable = document.querySelector("#dealTable");
         dealTable.innerHTML = "";
 
-        console.log("sido", sidoList);
+        //console.log("sido", sidoList);
 
         // sidoList.forEach((houseDeal) => {
         //   dealTable.innerHTML += `<tr style="color: white"><td>${houseDeal.no}</td>
