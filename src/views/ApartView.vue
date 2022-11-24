@@ -326,7 +326,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 .bg {
   padding: 0px 220px;
   overflow: hidden;

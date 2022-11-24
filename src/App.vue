@@ -31,6 +31,7 @@ export default {
   width: 100%;
   height: 999px;
   text-align: center;
+  overflow: hidden;
 }
 ::selection {
   background-color: #ffb91a;

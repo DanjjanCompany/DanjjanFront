@@ -26,9 +26,6 @@
         <div class="" id="navbarNavDropdown">
           <ul class="navbar-nav">
             <li class="nav-item">
-              <router-link :to="{ name: 'create' }" class="nav-link"> 유저 등록 </router-link>
-            </li>
-            <li class="nav-item">
               <router-link :to="{ name: 'user' }" class="nav-link" style="text-align: center">
                 유저 목록
               </router-link>
@@ -40,7 +37,7 @@
             </li>
             <li class="nav-item">
               <router-link :to="{ name: 'loginPage' }" class="nav-link" v-model="navLinkFocus">
-                로그인 페이지
+                로그인
               </router-link>
             </li>
             <li class="nav-item">
@@ -146,6 +143,7 @@ export default {
 #navV {
   background-color: rgb(4, 45, 8);
   color: white;
+  z-index: 20;
 }
 .aaa {
   margin-bottom: 50px;

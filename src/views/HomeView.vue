@@ -15,8 +15,8 @@ export default {};
   overflow: hidden;
 }
 img {
-  width: 300px;
-  height: 150px;
+  width: 1870px;
+  height: 863px;
   object-fit: cover;
 }
 </style>
