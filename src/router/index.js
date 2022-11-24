@@ -48,6 +48,12 @@ const routes = [
         name: "userModify",
         component: () => import("@/views/UserView/UserUpdate.vue"),
       },
+      //비밀번호 찾기
+      {
+        path: "findPwd",
+        name: "findPwd",
+        component: () => import("@/views/UserView/FindPwd.vue"),
+      },
     ],
   },
   // 실거래가 화면
