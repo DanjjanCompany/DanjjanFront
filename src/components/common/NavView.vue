@@ -159,6 +159,7 @@ a:hover {
   background-color: #ffb91a;
   border-radius: 50px;
   text-decoration: none;
+  color: black;
 }
 #aa {
   width: 20px;
