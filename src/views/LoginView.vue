@@ -30,13 +30,13 @@
             <br />
             <div class="createDiv">
               Don't have an account?&nbsp;&nbsp;
-              <router-link
-                :to="{ name: 'create' }"
-                class="nav-link"
-                id="createChild"
-              >
+              <router-link :to="{ name: 'create' }" class="nav-link" id="createChild">
                 Sign up
               </router-link>
+            </div>
+            <div class="createDiv">
+              Find Password?&nbsp;&nbsp;
+              <button class="btn btn-danger" @click="sendMail">Find Pwd</button>
             </div>
           </div>
           <div id="right">
@@ -44,7 +44,7 @@
               src="@/assets/login.jpg"
               alt="로그인 사진"
               width="100%"
-              style="border-radius: 50px;"
+              style="border-radius: 50px"
             />
           </div>
         </div>
@@ -55,28 +55,38 @@
 </template>
 
 <script>
-import { mapState } from 'vuex'
+import { mapState } from "vuex";
+import http from "@/util/http";
 export default {
   data() {
     return {
       loginInfo: {},
-    }
+    };
   },
   computed: {
-    ...mapState('userStore', ['userInfo']),
+    ...mapState("userStore", ["userInfo"]),
   },
   methods: {
     async login() {
       try {
-        await this.$store.dispatch('userStore/login', this.loginInfo)
-        alert('로그인 성공')
-        this.$router.push('/').catch(() => {}) //홈 화면 이동
+        await this.$store.dispatch("userStore/login", this.loginInfo);
+        alert("로그인 성공");
+        this.$router.push("/").catch(() => {}); //홈 화면 이동
       } catch (error) {
-        alert('로그인 실패')
+        alert("로그인 실패");
+      }
+    },
+    async sendMail() {
+      //id 정보 가져와서 삭제요청 보내기
+      try {
+        await http.post(`/users/mail`);
+        alert("메일 보내기 성공");
+      } catch (error) {
+        alert("실패");
       }
     },
   },
-}
+};
 </script>
 
 <style scoped>
