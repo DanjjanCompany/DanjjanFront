@@ -2,22 +2,34 @@
   <div class="regist">
     <h1 class="underline">SSAFY 게시글 수정</h1>
     <div class="regist_form">
-      <label for="userid">작성자</label>
-      <input type="text" id="userid" v-model="article.userid" ref="userid" />
-      <br />
-      <label for="subject">제목</label>
-      <input type="text" id="subject" v-model="article.subject" ref="subject" />
-      <br />
-      <label for="content">내용</label>
-      <br />
-      <textarea
-        id="content"
-        v-model="article.content"
-        ref="content"
-        cols="35"
-        rows="5"
-      ></textarea>
-      <br />
+      <div id="idDiv">
+        <label for="userid">작성자&nbsp;&nbsp;&nbsp;</label>
+        <br />
+        <input type="text" id="userid" v-model="article.userid" ref="userid" />
+        <br />
+      </div>
+      <div id="subjectDiv">
+        <label for="subject">제목</label>
+        <input
+          type="text"
+          id="subject"
+          v-model="article.subject"
+          ref="subject"
+        />
+        <br />
+      </div>
+      <div id="contentDiv">
+        <label for="content">내용</label>
+        <br />
+        <textarea
+          id="content"
+          v-model="article.content"
+          ref="content"
+          cols="35"
+          rows="5"
+        ></textarea>
+        <br />
+      </div>
       <button @click="checkValue">수정</button>
       <button @click="moveList">목록</button>
     </div>
@@ -96,4 +108,19 @@ export default {
 }
 </script>
 
-<style scoped></style>
+<style scoped>
+.regist_form {
+  padding: 0 700px;
+}
+#idDiv,
+#subjectDiv,
+#contentDiv {
+  justify-content: space-between;
+}
+
+#userid,
+#subject,
+#content {
+  width: 100%;
+}
+</style>
