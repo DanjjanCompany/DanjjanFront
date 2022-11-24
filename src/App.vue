@@ -14,9 +14,9 @@ export default {
     NavView,
     // FooterView,
   },
-  devServer: {
-    proxy: 'http://localhost:9000/api',
-  },
+  // devServer: {
+  //   proxy: 'http://localhost:9000/api',
+  // },
 }
 </script>
 

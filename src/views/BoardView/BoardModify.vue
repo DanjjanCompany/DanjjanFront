@@ -3,7 +3,7 @@
     <h1 class="underline">SSAFY 게시글 수정</h1>
     <div class="regist_form">
       <div id="idDiv">
-        <label for="userid">작성자&nbsp;&nbsp;&nbsp;</label>
+        <label for="userid">작성자</label>
         <br />
         <input type="text" id="userid" v-model="article.userid" ref="userid" />
         <br />
@@ -122,5 +122,18 @@ export default {
 #subject,
 #content {
   width: 100%;
+}
+button {
+  background-color: #edab13;
+  border: 1px solid #edab13;
+  border-radius: 50px;
+  width: 120px;
+  height: 50px;
+  color: black;
+  text-align: center;
+}
+a {
+  text-decoration: none;
+  color: black;
 }
 </style>

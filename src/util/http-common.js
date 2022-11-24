@@ -1,9 +1,9 @@
-import axios from "axios";
+import axios from 'axios'
 
 // axios 객체 생성 후 export
 export default axios.create({
-  baseURL: 'http://localhost:9000/api',
+  baseURL: 'http://192.168.130.83:8080/api',
   headers: {
-    "Content-Type": "application/json",
+    'Content-Type': 'application/json',
   },
-});
+})
